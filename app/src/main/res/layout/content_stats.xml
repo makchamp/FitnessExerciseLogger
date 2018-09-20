@@ -1,0 +1,124 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Stats"
+    tools:showIn="@layout/activity_stats"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/exerciseNameStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textColor="#212121"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#212121" />
+
+    <TextView
+        android:id="@+id/exercise_weight_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:textColor="#B71C1C"
+        android:text="@string/exercise_weight"
+        android:textSize="20sp"
+
+        />
+
+    <EditText
+        android:id="@+id/weight_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:ems="10"
+        android:hint="@string/exercise_hint_num"
+        android:inputType="number"
+        android:maxLines="1"
+        android:imeOptions="actionDone" />
+
+    <TextView
+        android:id="@+id/exercise_reps_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:textColor="#B71C1C"
+        android:text="@string/exercise_reps"
+        android:textSize="20sp"
+        android:maxLines="1"/>
+
+    <EditText
+        android:id="@+id/reps_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:ems="10"
+        android:hint="@string/exercise_hint_num"
+        android:inputType="number"
+        android:maxLines="1"
+        android:imeOptions="actionDone" />
+
+    <TextView
+        android:id="@+id/exercise_date_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:textColor="#B71C1C"
+        android:text="@string/exercise_date"
+        android:textSize="20sp"
+        android:maxLines="1"/>
+
+
+    <EditText
+        android:id="@+id/date_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:ems="10"
+        android:hint="@string/exercise_hint_date"
+        android:inputType="date"
+        android:imeOptions="actionDone"
+        />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/noteBox"
+                android:hint="Notes..."
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:inputType="text|textMultiLine|textCapSentences"
+                android:maxLines="10"
+                android:gravity="top" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+</LinearLayout>
+
+
+
+

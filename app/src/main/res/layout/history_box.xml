@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/historyCardBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    android:divider="@android:color/transparent"
+    android:layout_margin="4dp"
+    android:dividerHeight="4dp"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_marginBottom="5dp"
+    >
+
+
+
+    <RelativeLayout
+        android:id="@+id/relative_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+
+        <ImageButton
+            android:id="@+id/spin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            style="@style/differentSpinner"
+            />
+
+
+
+
+        <TextView
+            android:id="@+id/history_date"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="Date" />
+
+        <TextView
+            android:id="@+id/history_weight_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="120dp"
+            android:layout_marginStart="120dp"
+            android:text="167"
+            android:textColor="#424242"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/units_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/history_weight_value"
+            android:layout_toRightOf="@+id/history_weight_value"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="1dp"
+            android:text="lbs" />
+
+        <TextView
+            android:id="@+id/history_reps_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_toRightOf="@+id/units_weight"
+            android:text="10"
+            android:textColor="#424242"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/units_reps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/history_reps_value"
+            android:layout_toRightOf="@+id/history_reps_value"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="reps" />
+
+
+
+        <RelativeLayout
+            android:id="@+id/viewNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/history_date"
+            android:paddingTop="@dimen/activity_horizontal_margin">
+
+
+        <TextView
+            android:id="@+id/NOTE_TITLE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notes: "
+            android:textColor="#81433f3f"/>
+
+            <TextView
+                android:id="@+id/history_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginStart="100dp"
+                android:textColor="#2b2b2b"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

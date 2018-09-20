@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+            android:id="@+id/action_settings_alphSort"
+            android:title="@string/action_settings_alphSort"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/action_settings_dateSort"
+            android:title="@string/action_settings_dateSort"
+            app:showAsAction="never"/>
+
+        <item
+             android:id="@+id/action_settings_prSort"
+             android:title="@string/action_settings_prSort"
+             app:showAsAction="never"/>
+
+        <item
+             android:id="@+id/action_settings_search"
+            android:title="@string/action_settings_search"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_search_white_24dp"
+        />
+
+        <item
+            android:id="@+id/action_settings_add"
+            android:title="@string/action_settings_add"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_add_white_24dp"/>
+
+
+</menu>
