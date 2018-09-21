@@ -11,7 +11,7 @@
     android:dividerHeight="4dp"
     android:clipToPadding="false"
     android:clipChildren="false"
-    app:cardBackgroundColor="#607D8B"
+    app:cardBackgroundColor="#161d20"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="5dp"
     android:layout_marginBottom="5dp"
