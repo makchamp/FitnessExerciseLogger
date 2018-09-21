@@ -12,6 +12,9 @@ public class LogBox implements Parcelable, Serializable{
     private String[] category;
     private ArrayList<Exercise> exercises;
 
+    public LogBox() {
+    }
+
     public LogBox(String exerciseName) {
         this.exerciseName = exerciseName;
     }

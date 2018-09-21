@@ -89,7 +89,8 @@ public class Stats extends AppCompatActivity {
 
                 Exercise exerciseToLog = new Exercise(name, category, null, weight, reps, notes, false);
                 LogBox  logBoxToLog =  new LogBox(name, category, new ArrayList<Exercise>(Arrays.asList(exerciseToLog)));
-                LogBox x = null;
+                LogBox lb = new LogBox();
+
 
 
                 if (!WorkoutLog.addedExercises.contains(name)) {
@@ -101,15 +102,15 @@ public class Stats extends AppCompatActivity {
                     for(String i : exerciseToLog.getCategory()){
 
                         if (i.equals("Chest"))
-                            FragmentChest.logBoxesChest.add(logBoxToLog);
+                            FragmentChest.logBoxesChest.add(new LogBox(name, category, new ArrayList<Exercise>(Arrays.asList(exerciseToLog))));
                         if(i.equals("Arms"))
-                            FragmentArms.logBoxesArms.add(logBoxToLog);
+                            FragmentArms.logBoxesArms.add(new LogBox(name, category, new ArrayList<Exercise>(Arrays.asList(exerciseToLog))));
                         if(i.equals("Back"))
-                            FragmentBack.logBoxesBack.add(logBoxToLog);
+                            FragmentBack.logBoxesBack.add(new LogBox(name, category, new ArrayList<Exercise>(Arrays.asList(exerciseToLog))));
                         if(i.equals("Legs"))
-                            FragmentLegs.logBoxesLegs.add(logBoxToLog);
+                            FragmentLegs.logBoxesLegs.add(new LogBox(name, category, new ArrayList<Exercise>(Arrays.asList(exerciseToLog))));
                         if(i.equals("Shoulders"))
-                            FragmentShoulders.logBoxesShoulders.add(logBoxToLog);
+                            FragmentShoulders.logBoxesShoulders.add(new LogBox(name, category, new ArrayList<Exercise>(Arrays.asList(exerciseToLog))));
 
                     }
 
@@ -119,17 +120,17 @@ public class Stats extends AppCompatActivity {
                     toast1.show();
 
 
+
                 } else {
 
                     for(LogBox j : WorkoutLog.logBoxesALL){
 
                         if(j.getExerciseName().equals(exerciseToLog.getName())) {
                             j.getExercises().add(exerciseToLog);
-                            x=j;
+                            lb= j;
+
                         }
                     }
-
-
 
 
                     for(String i : exerciseToLog.getCategory()){
@@ -138,8 +139,8 @@ public class Stats extends AppCompatActivity {
 
                             for(LogBox j : FragmentChest.logBoxesChest){
 
-                                if(j.getExerciseName().equals(exerciseToLog.getName()) && (j != x))
-                                    j.getExercises().add(exerciseToLog);
+                                if(j.getExerciseName().equals(exerciseToLog.getName()))
+                                    j.setExercises(lb.getExercises());
                             }
                         }
 
@@ -147,32 +148,32 @@ public class Stats extends AppCompatActivity {
 
                             for(LogBox j : FragmentArms.logBoxesArms){
 
-                                if(j.getExerciseName().equals(exerciseToLog.getName())&& (j!=x))
-                                    j.getExercises().add(exerciseToLog);
+                                if(j.getExerciseName().equals(exerciseToLog.getName()))
+                                    j.setExercises(lb.getExercises());
                             }
                         }
                         if(i.equals("Back")){
 
                             for(LogBox j : FragmentBack.logBoxesBack){
 
-                                if(j.getExerciseName().equals(exerciseToLog.getName())&& (j != x))
-                                    j.getExercises().add(exerciseToLog);
+                                if(j.getExerciseName().equals(exerciseToLog.getName()))
+                                    j.setExercises(lb.getExercises());
                             }
                         }
                         if(i.equals("Legs")){
 
                             for(LogBox j : FragmentLegs.logBoxesLegs){
 
-                                if(j.getExerciseName().equals(exerciseToLog.getName())&& (j != x))
-                                    j.getExercises().add(exerciseToLog);
+                                if(j.getExerciseName().equals(exerciseToLog.getName()))
+                                    j.setExercises(lb.getExercises());
                             }
                         }
                         if(i.equals("Shoulders")){
 
                             for(LogBox j : FragmentShoulders.logBoxesShoulders){
 
-                                if(j.getExerciseName().equals(exerciseToLog.getName())&& (j != x))
-                                    j.getExercises().add(exerciseToLog);
+                                if(j.getExerciseName().equals(exerciseToLog.getName()))
+                                    j.setExercises(lb.getExercises());
                             }
                         }
 
