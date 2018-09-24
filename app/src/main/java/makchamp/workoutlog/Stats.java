@@ -92,6 +92,7 @@ public class Stats extends AppCompatActivity {
                 LogBox lb = new LogBox();
 
 
+                // **************The following is very bad design. Eventually needs to be changed for the same log box object being displayed across all the fragments.****************
 
                 if (!WorkoutLog.addedExercises.contains(name)) {
 

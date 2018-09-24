@@ -138,6 +138,9 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.viewHolder> {
                 notifyItemRemoved(pos);
                 notifyDataSetChanged();
 
+            // This is very bad design. Eventually needs to be changed for the same object across the fragments.
+
+
                 for(String j : categories) {
 
                     if (j.equals("Chest")) {

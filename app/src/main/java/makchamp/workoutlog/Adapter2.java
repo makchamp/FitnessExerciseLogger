@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,9 +21,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder>{
+public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder> implements Filterable{
 
     protected static  ArrayList<LogBox> logBoxList;
+    private ArrayList<LogBox> copyLogBoxList;
     private int mExpandedPosition =  -1;
     private OnItemClickListener clickListener;
     private Context context;
@@ -33,6 +36,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder>{
 
         this.logBoxList = new ArrayList<>(alllogBoxList);
         this.context = context;
+        copyLogBoxList = new ArrayList<LogBox>(logBoxList);
 
 
     }
@@ -94,6 +98,48 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder>{
 
 
     }
+
+
+    @Override
+    public Filter getFilter() {
+        return filt;
+    }
+
+    private Filter filt = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            ArrayList<LogBox> filtered = new ArrayList<>();
+            if (charSequence == null || charSequence.length() == 0){
+                filtered.addAll(copyLogBoxList);
+            }
+            else{
+                String chars = charSequence.toString().trim().toLowerCase();
+
+                for (LogBox i : copyLogBoxList){
+
+                    if(i.getExerciseName().toLowerCase().contains(chars)){
+                        filtered.add(i);
+                    }
+                }
+            }
+            FilterResults filteredResults = new FilterResults();
+            filteredResults.values = filtered;
+
+            return filteredResults ;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+            logBoxList.clear();
+            logBoxList.addAll((ArrayList<LogBox>)filterResults.values);
+            notifyDataSetChanged();
+
+        }
+    };
+
+
+
 
 
 

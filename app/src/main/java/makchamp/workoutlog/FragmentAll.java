@@ -19,7 +19,7 @@ public class FragmentAll extends Fragment {
 
 
     protected static Exercise title = new Exercise();
-    private Adapter2 adapter2;
+    protected static Adapter2 adapter2;
     private Button emptyLogButn;
     protected static LogBox chosenLogBox = new LogBox("Exercise");
 
@@ -134,5 +134,32 @@ public class FragmentAll extends Fragment {
         }
     }
 
+  /*  @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
 
+        inflater.inflate(R.menu.workout_log, menu);
+        MenuItem searchField = menu.findItem(R.id.action_settings_search_wl);
+        SearchView searchView = (SearchView) searchField.getActionView();
+
+        searchView.setIconified(true);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                adapter2.getFilter().filter(newText);
+
+                return false;
+            }
+        });
+
+
+    }*/
 }
