@@ -38,24 +38,23 @@
             />
 
 
-
-
         <TextView
             android:id="@+id/history_date"
-            android:layout_width="84dp"
+            android:layout_width="106dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="Date" />
+            android:text="Date N/A"
+            android:textColor="#81433f3f"/>
 
         <TextView
             android:id="@+id/history_weight_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="120dp"
-            android:layout_marginStart="120dp"
-            android:text="167"
+            android:layout_marginLeft="130dp"
+            android:layout_marginStart="130dp"
+            android:text="0.0"
             android:textColor="#424242"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -78,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
             android:layout_toRightOf="@+id/units_weight"
-            android:text="10"
+            android:text="0"
             android:textColor="#424242"
             android:textSize="15sp"
             android:textStyle="bold" />

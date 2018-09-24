@@ -85,7 +85,7 @@
         android:maxLines="1"/>
 
 
-    <EditText
+    <TextView
         android:id="@+id/date_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,7 +96,11 @@
         android:inputType="date"
         android:imeOptions="actionDone"
         />
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#212121" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"

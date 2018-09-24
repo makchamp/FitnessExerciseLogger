@@ -3,13 +3,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Exercise implements Parcelable, Serializable{
 
     private String name;
     private String[] category;
-    private Date date;
+    private String date;
     private double weight;
     private int reps;
     private String notes;
@@ -33,7 +32,7 @@ public class Exercise implements Parcelable, Serializable{
         this.reps = reps;
     }
 
-    public Exercise(String name, String[] category, Date date, double weight, int reps, String notes, boolean custom) {
+    public Exercise(String name, String[] category, String date, double weight, int reps, String notes, boolean custom) {
         this.name = name;
         this.category = category;
         this.date = date;
@@ -47,6 +46,7 @@ public class Exercise implements Parcelable, Serializable{
         name = in.readString();
         category = in.createStringArray();
         weight = in.readDouble();
+        date = in.readString();
         reps = in.readInt();
         notes = in.readString();
         custom = in.readByte() != 0;
@@ -72,7 +72,7 @@ public class Exercise implements Parcelable, Serializable{
         return category;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -91,7 +91,7 @@ public class Exercise implements Parcelable, Serializable{
         this.name = name;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -141,6 +141,7 @@ public class Exercise implements Parcelable, Serializable{
         parcel.writeString(name);
         parcel.writeStringArray(category);
         parcel.writeDouble(weight);
+        parcel.writeString(date);
         parcel.writeInt(reps);
         parcel.writeString(notes);
         parcel.writeByte((byte) (custom ? 1 : 0));

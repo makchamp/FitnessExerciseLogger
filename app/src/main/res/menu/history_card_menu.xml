@@ -2,18 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
+
+  <!--  <item
         android:id="@+id/history_Edit"
         android:title="Edit"
         app:showAsAction="never"/>
+
+        -->
     <item
         android:id="@+id/history_Delete"
         android:title="Delete"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/history_toggle_notes"
-        android:title="Toggle Notes"
         app:showAsAction="never"/>
 
 

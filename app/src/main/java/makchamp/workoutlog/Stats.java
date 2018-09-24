@@ -1,5 +1,6 @@
 package makchamp.workoutlog;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,21 +8,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-
+import java.util.Calendar;
 
 
 public class Stats extends AppCompatActivity {
 
     private boolean fromLog;
-    String name;
-    String[] category;
+    private String name;
+    private String[] category;
+    private DatePickerDialog.OnDateSetListener dateSetListener;
+    private String date;
+    private TextView dateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,10 @@ public class Stats extends AppCompatActivity {
         getSupportActionBar().setTitle("Add to Your Log");
 
 
+
         fromLog = getIntent().getBooleanExtra("fromLog", false);
+
+
 
          TextView exerciseName = findViewById(R.id.exerciseNameStats);
         if (!fromLog && addToLog.temp != null) {
@@ -50,6 +57,38 @@ public class Stats extends AppCompatActivity {
 
         fromLog = false;
 
+        dateText = (TextView) findViewById(R.id.date_value);
+
+
+
+        dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Stats.this, android.R.style.Theme_DeviceDefault_Dialog_MinWidth, dateSetListener, year, month, day);
+
+                datePickerDialog.show();
+
+            }
+        });
+
+        dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int y, int m, int d) {
+                m = m +1;
+                date =  (m + "/" + d + "/" + y);
+                dateText.setText(date);
+
+
+            }
+        };
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
@@ -57,10 +96,10 @@ public class Stats extends AppCompatActivity {
             double weight;
             EditText repsText = (EditText) findViewById(R.id.reps_value);
             int reps;
-            EditText dateText = (EditText) findViewById(R.id.date_value);
-            Date date;
+
             EditText notesText = (EditText) findViewById(R.id.noteBox);
             String notes;
+
 
 
             @Override
@@ -87,7 +126,7 @@ public class Stats extends AppCompatActivity {
                 }
 
 
-                Exercise exerciseToLog = new Exercise(name, category, null, weight, reps, notes, false);
+                Exercise exerciseToLog = new Exercise(name, category, date, weight, reps, notes, false);
                 LogBox  logBoxToLog =  new LogBox(name, category, new ArrayList<Exercise>(Arrays.asList(exerciseToLog)));
                 LogBox lb = new LogBox();
 

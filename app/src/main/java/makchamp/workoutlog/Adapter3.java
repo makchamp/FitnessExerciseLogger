@@ -3,6 +3,7 @@ package makchamp.workoutlog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -52,42 +53,23 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.viewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolder holder,  final int position) {
+    public void onBindViewHolder(@NonNull viewHolder holder,  int position) {
 
         Exercise exercise = exerciseList.get(position);
-        if(exercise != null) {
+        String date = exercise.getDate();
+        String notes = exercise.getNotes();
+        
+
             holder.weight.setText(Double.toString(exercise.getWeight()));
             holder.reps.setText(Integer.toString(exercise.getReps()));
             holder.notes.setText(exercise.getNotes());
 
-            if (holder.date == null)
-                holder.date.setText("Date N/A");
-
-        }
-
-
-
-
-      /*  final boolean expanded = (position == mExpandedPosition);
-
-        holder.viewNotes.setVisibility(expanded ? View.VISIBLE: View.GONE);
-        holder.itemView.setActivated(expanded);
-
-        if (expanded) {
-            mExpandedPosition = position;
-        }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                mExpandedPosition = (expanded ? -1 : position);
-
-                notifyItemChanged(position);
-                notifyItemChanged(mExpandedPosition);
-
+            if(date != null) {
+                holder.date.setText(date);
+                holder.date.setTextColor(Color.parseColor("#424242"));
             }
-        });
-*/
+
+
 
     }
 
@@ -244,11 +226,10 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.viewHolder> {
             reps = itemView.findViewById(R.id.history_reps_value);
             imageButton = itemView.findViewById(R.id.spin);
             notes = itemView.findViewById(R.id.history_notes);
+          //  edit = itemView.findViewById(R.id.history_Edit);
             viewNotes = itemView.findViewById(R.id.viewNotes);
             date = itemView.findViewById(R.id.history_date);
-            edit = itemView.findViewById(R.id.history_Edit);
             delete = itemView.findViewById(R.id.history_Delete);
-            toggleNotes = itemView.findViewById(R.id.history_toggle_notes);
 
 
 
@@ -271,9 +252,26 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.viewHolder> {
                         @Override
                         public boolean onMenuItemClick(MenuItem menuItem) {
 
+                            int id = menuItem.getItemId();
+
+
+
+                            if (id == R.id.history_Delete){
                                 AlertDialog deleteConfirm = deleteDialog(getAdapterPosition());
                                 deleteConfirm.show();
-                                return true;
+                            }
+
+                           /* if(id == R.id.history_Edit){
+
+
+
+
+                            }*/
+
+
+
+                           
+                            return true;
 
 
                         }
