@@ -71,11 +71,6 @@ public class AddExercise extends AppCompatActivity
             Intent i1 = new Intent(AddExercise.this, WorkoutLog.class);
             startActivity(i1);
 
-        } else if (id == R.id.menuNewWorkout) {
-
-            Intent i2 = new Intent(AddExercise.this, NewWorkout.class);
-            startActivity(i2);
-
         } else if (id == R.id.menuAddExercise) {
 
 

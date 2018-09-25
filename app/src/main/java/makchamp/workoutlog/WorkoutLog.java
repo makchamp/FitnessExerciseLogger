@@ -288,11 +288,6 @@ public class WorkoutLog extends AppCompatActivity
         if (id == R.id.menuLog) {
 
 
-        } else if (id == R.id.menuNewWorkout) {
-
-            Intent i2 = new Intent(WorkoutLog.this, NewWorkout.class);
-            startActivity(i2);
-
         } else if (id == R.id.menuAddExercise) {
 
             Intent i3= new Intent(WorkoutLog.this, AddExercise.class);

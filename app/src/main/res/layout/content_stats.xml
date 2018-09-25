@@ -17,7 +17,7 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:textColor="#212121"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold"/>
 
     <View
@@ -48,7 +48,8 @@
         android:hint="@string/exercise_hint_num"
         android:inputType="number"
         android:maxLines="1"
-        android:imeOptions="actionDone" />
+        android:imeOptions="actionDone"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/exercise_reps_stats"
@@ -71,7 +72,8 @@
         android:hint="@string/exercise_hint_num"
         android:inputType="number"
         android:maxLines="1"
-        android:imeOptions="actionDone" />
+        android:imeOptions="actionDone"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/exercise_date_stats"
@@ -93,8 +95,7 @@
         android:gravity="center_horizontal"
         android:ems="10"
         android:hint="@string/exercise_hint_date"
-        android:inputType="date"
-        android:imeOptions="actionDone"
+        android:textSize="20sp"
         />
     <View
         android:layout_width="match_parent"

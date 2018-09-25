@@ -16,6 +16,7 @@
         <activity
             android:name=".MainMenu"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -25,19 +26,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Search"
-            android:label="@string/title_activity_search"
-            android:parentActivityName=".MainMenu"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="makchamp.workoutlog.MainMenu" />
-        </activity>
-        <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainMenu"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -46,16 +38,6 @@
         <activity
             android:name=".WorkoutLog"
             android:label="@string/title_activity_workout_log"
-            android:parentActivityName=".MainMenu"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="makchamp.workoutlog.MainMenu" />
-        </activity>
-        <activity
-            android:name=".NewWorkout"
-            android:label="@string/title_activity_new_workout"
             android:parentActivityName=".MainMenu"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">

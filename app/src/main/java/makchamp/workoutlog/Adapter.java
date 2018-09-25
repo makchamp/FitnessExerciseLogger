@@ -41,7 +41,22 @@ public class Adapter extends RecyclerView.Adapter<Adapter.viewHolder> implements
     public void onBindViewHolder(@NonNull viewHolder holder,  int position) {
 
         Exercise exercise = exerciseList.get(position);
-        holder.textViewer.setText(exercise.getName());
+        holder.exerciseTxt.setText(exercise.getName());
+
+        String categories = "";
+        String[] categoriesArr = exercise.getCategory();
+
+
+        for(int i = 0; i < categoriesArr.length; i++){
+
+            if(i < categoriesArr.length-1)
+            categories += (categoriesArr[i] + ", ");
+            else if (i == categoriesArr.length-1)
+                categories += categoriesArr[i];
+
+        }
+
+       holder.categoryTxt.setText(categories);
 
     }
 
@@ -107,12 +122,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.viewHolder> implements
 
     public class viewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textViewer;
+        private TextView exerciseTxt;
+        private TextView categoryTxt;
 
 
         public viewHolder(final View itemView) {
             super(itemView);
-            textViewer = itemView.findViewById(R.id.exerciseTxt);
+            exerciseTxt = itemView.findViewById(R.id.exerciseTxt);
+            categoryTxt = itemView.findViewById(R.id.categoryTxt);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

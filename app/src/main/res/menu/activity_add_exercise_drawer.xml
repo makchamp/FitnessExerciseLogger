@@ -9,13 +9,10 @@
             android:id="@+id/menuLog"
             android:icon="@drawable/ic_description_black_24dp"
             android:title="My Log " />
-        <item
-            android:id="@+id/menuNewWorkout"
-            android:icon="@drawable/ic_fitness_center_black_24dp"
-            android:title="Create New Workout" />
+
         <item
             android:id="@+id/menuAddExercise"
-            android:icon="@drawable/ic_add_circle_black_24dp"
+            android:icon="@drawable/ic_fitness_center_black_24dp"
             android:title="Add Exercise" />
         <item
             android:id="@+id/menuSettings"

@@ -48,7 +48,7 @@ public class addToLog extends AppCompatActivity {
         exerciseList.add(new Exercise("Barbell Bench Press (declined)", new String[]{"Chest"}));
         exerciseList.add(new Exercise("Barbell Bench Press (flat)", new String[]{"Chest"}));
         exerciseList.add(new Exercise("Barbell Bench Press (inclined)", new String[]{"Chest"}));
-        exerciseList.add(new Exercise("Barbell Bench Press (close-grip)", new String[]{"Chest", "Triceps"}));
+        exerciseList.add(new Exercise("Barbell Bench Press (close-grip)", new String[]{"Chest", "Arms"}));
         exerciseList.add(new Exercise("Barbell Curl", new String[]{"Arms"}));
         exerciseList.add(new Exercise("Barbell Overhead Press", new String[]{"Shoulders"}));
         exerciseList.add(new Exercise("Cable Cross-over (low to high)", new String[]{"Chest"}));
@@ -168,10 +168,10 @@ public class addToLog extends AppCompatActivity {
         return true;
     }
 
-    public void onBackPressed() {
+   /* public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(addToLog.this, WorkoutLog.class);
         startActivity(i);
-    }
+    }*/
 
 }
