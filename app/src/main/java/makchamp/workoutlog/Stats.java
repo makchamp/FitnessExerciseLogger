@@ -2,7 +2,9 @@ package makchamp.workoutlog;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,11 +36,11 @@ public class Stats extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add to Your Log");
+        setUnitSystem();
 
 
 
         fromLog = getIntent().getBooleanExtra("fromLog", false);
-
 
 
          TextView exerciseName = findViewById(R.id.exerciseNameStats);
@@ -113,12 +115,12 @@ public class Stats extends AppCompatActivity {
                     else
                         weight = 0;
 
-                    if (repsText.getText() != null  && weightText.getText().length() > 0)
+                    if (repsText.getText() != null  && repsText.getText().length() > 0)
                         reps = (Integer.parseInt(repsText.getText().toString()));
                     else
                         reps = 0;
 
-                    if (notesText.getText() != null && weightText.getText().length() > 0)
+                    if (notesText.getText() != null && notesText.getText().length() > 0)
                         notes = notesText.getText().toString();
                 }catch (NumberFormatException e){
 
@@ -244,6 +246,22 @@ public class Stats extends AppCompatActivity {
 
 
     }
+
+    private void setUnitSystem(){
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String navTitle = sharedPref.getString("unit_list", "Workout Log");
+        TextView unitSystem = (TextView) findViewById(R.id.exercise_weight_stats);
+
+        if(navTitle.equals("0"))
+            unitSystem.setText(R.string.exercise_weight_lbs);
+        else if (navTitle.equals("1"))
+            unitSystem.setText(R.string.exercise_weight_kg);
+
+
+    }
+
+
 
     public void onBackPressed() {
         super.onBackPressed();

@@ -61,6 +61,12 @@ public class WorkoutLog extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+       NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view1);
+        /*View headerView = navigationView.getHeaderView(0);
+        TextView navTitleView = (TextView) headerView.findViewById(R.id.nav_header_title);
+        navTitleView.setText(navTitle);*/
+
         File fileDir = new File(path);
 
         if(!fileDir.exists())
@@ -97,8 +103,8 @@ public class WorkoutLog extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
 
 
 
@@ -377,5 +383,10 @@ public class WorkoutLog extends AppCompatActivity
             return 6;
         }
     }
+
+
+
+
+
 
 }

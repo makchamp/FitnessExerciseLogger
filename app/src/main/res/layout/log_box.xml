@@ -46,13 +46,15 @@
 
 
         <TextView
-            android:id="@+id/logBox_personalBest"
+            android:id="@+id/logBox_highlight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/logBox_line"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="Personal Best:"
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
+            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/highlight_personal_best"
             android:textColor="#B71C1C"
             android:textSize="15sp" />
 
@@ -62,8 +64,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/logBox_line"
-            android:layout_toEndOf="@+id/logBox_personalBest"
-            android:layout_toRightOf="@+id/logBox_personalBest"
+            android:layout_toEndOf="@+id/logBox_highlight"
+            android:layout_toRightOf="@+id/logBox_highlight"
             android:text="167"
             android:textColor="#424242"
             android:textSize="15sp"
@@ -111,7 +113,7 @@
             android:id="@+id/logBox_options"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/logBox_personalBest"
+            android:layout_below="@+id/logBox_highlight"
             android:visibility="gone">
 
             <ImageButton

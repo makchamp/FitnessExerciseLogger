@@ -121,7 +121,12 @@ public class Settings extends AppCompatPreferenceActivity {
         setupActionBar();
         getFragmentManager().beginTransaction().replace(android.R.id.content,
                 new GeneralPreferenceFragment()).commit();
+
+
+
     }
+
+
 
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
@@ -170,6 +175,7 @@ public class Settings extends AppCompatPreferenceActivity {
 
     }
 
+
     /**
      * This fragment shows general preferences only. It is used when the
      * activity is showing a two-pane settings UI.
@@ -188,7 +194,9 @@ public class Settings extends AppCompatPreferenceActivity {
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("name_text"));
             bindPreferenceSummaryToValue(findPreference("unit_list"));
-            bindPreferenceSummaryToValue(findPreference("highlight_list"));
+          //  bindPreferenceSummaryToValue(findPreference("highlight_list"));
+
+
         }
 
         @Override

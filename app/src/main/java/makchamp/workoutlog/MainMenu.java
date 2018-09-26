@@ -15,9 +15,10 @@ public class MainMenu extends AppCompatActivity {
 
 
         Button myLogButn = (Button) findViewById(R.id.myLogButn);
-        Button newExerciseButn = (Button) findViewById(R.id.newExerciseButn);
+       // Button newExerciseButn = (Button) findViewById(R.id.newExerciseButn);
         Button searchExercisesButn = (Button) findViewById(R.id.searchExercisesButn);
         Button settingsButn = (Button)findViewById(R.id.settingsButn);
+
 
        myLogButn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
@@ -28,13 +29,13 @@ public class MainMenu extends AppCompatActivity {
 
 
 
-        newExerciseButn.setOnClickListener(new View.OnClickListener() {
+       /* newExerciseButn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 Intent i3 = new Intent(getApplicationContext(), AddExercise.class);
                 startActivity(i3);
             }
         });
-
+*/
         searchExercisesButn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 Intent i4 = new Intent(getApplicationContext(), addToLog.class);

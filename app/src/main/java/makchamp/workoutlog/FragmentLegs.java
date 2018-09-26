@@ -49,7 +49,7 @@ public class FragmentLegs extends Fragment {
 
         View rootView =  inflater.inflate(R.layout.fragment_workout_log_all, null);
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerView_log_all);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new Adapter2(logBoxesLegs, this.getActivity());
@@ -78,7 +78,7 @@ public class FragmentLegs extends Fragment {
         adapter.setOnItemClickListener(new Adapter2.OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
-                chosenLogBox = logBoxesLegs.get(pos);
+                chosenLogBox = Adapter2.logBoxList.get(pos);
 
                 FragmentAll.title.setName(chosenLogBox.getExerciseName());
 

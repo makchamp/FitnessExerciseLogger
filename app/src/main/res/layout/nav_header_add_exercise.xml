@@ -15,7 +15,7 @@
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nav_header_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/pref_title_display_name"

@@ -3,15 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item
-        android:id="@+id/action_settings_dateSort"
-        android:title="@string/action_settings_dateSort"
-        app:showAsAction="never"/>
+   <!-- <item
+        android:id="@+id/history_add"
+        android:title="@string/action_settings_add"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_add_white_24dp"/>-->
 
-    <item
-        android:id="@+id/action_settings_prSort"
-        android:title="@string/action_settings_prSort"
-        app:showAsAction="never"/>
+
 
 
 </menu>

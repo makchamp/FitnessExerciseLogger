@@ -40,7 +40,7 @@ public class History extends AppCompatActivity {
         recycleView = findViewById(R.id.recyclerView_history);
         recycleView.setLayoutManager(layoutManager);
         recycleView.setAdapter(adapter);
-        recycleView.setHasFixedSize(true);
+        recycleView.setHasFixedSize(false);
 
 
 

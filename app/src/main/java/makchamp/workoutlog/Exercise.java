@@ -1,10 +1,11 @@
 package makchamp.workoutlog;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Exercise implements Parcelable, Serializable{
+public class Exercise implements Parcelable, Serializable, Comparable<Exercise>{
 
     private String name;
     private String[] category;
@@ -145,5 +146,29 @@ public class Exercise implements Parcelable, Serializable{
         parcel.writeInt(reps);
         parcel.writeString(notes);
         parcel.writeByte((byte) (custom ? 1 : 0));
+    }
+
+    @Override
+    public int compareTo(@NonNull Exercise exercise) {
+
+        int c = 0;
+
+        if(weight < exercise.weight)
+            c = 1;
+       else if(weight > exercise.weight)
+            c=-1;
+
+        else if(weight == exercise.weight){
+
+            if(reps < exercise.reps)
+                c=1;
+            else if (reps > exercise.reps)
+                c=-1;
+            else
+                c=0;
+        }
+
+
+        return c;
     }
 }

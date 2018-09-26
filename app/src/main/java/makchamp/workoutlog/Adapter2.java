@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder> implements Filterable{
@@ -65,11 +68,13 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder> implemen
 
             }
             else {
-
                 //Show highlight lift
 
-                holder.weight.setText(Double.toString(logBox.getExercises().get(logBox.getExercises().size()-1).getWeight()));
-                holder.reps.setText(Integer.toString(logBox.getExercises().get(logBox.getExercises().size()-1).getReps()));
+                Collections.sort(logBox.getExercises());
+
+                holder.weight.setText(Double.toString(logBox.getExercises().get(0).getWeight()));
+                holder.reps.setText(Integer.toString(logBox.getExercises().get(0).getReps()));
+
 
             }
         }
@@ -137,6 +142,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder> implemen
 
         }
     };
+
 
 
 
@@ -288,6 +294,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder> implemen
         private CardView cardView;
         private TextView exerciseName;
         private TextView weight;
+        private TextView weightUnit;
         private TextView reps;
         private RelativeLayout moreOptions;
         private Button viewHistory;
@@ -295,6 +302,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder> implemen
         private RecyclerView recyclerView;
         private Button emptyLogButn;
         private ImageButton add;
+        private TextView highlight;
 
 
         public viewHolder(final View itemView) {
@@ -305,12 +313,18 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder> implemen
             cardView =  itemView.findViewById(R.id.logCardBox);
             exerciseName = itemView.findViewById(R.id.logBox_exerciseName);
             weight = itemView.findViewById(R.id.logBox_weight_value);
+            weightUnit = itemView.findViewById(R.id.units_weight);
             reps = itemView.findViewById(R.id.logBox_reps_value);
             moreOptions = itemView.findViewById(R.id.logBox_options);
             viewHistory = itemView.findViewById(R.id.logBox_viewHistory);
             delete = itemView.findViewById(R.id.logBox_delete);
             emptyLogButn = itemView.findViewById(R.id.emptyLogButn);
             add = itemView.findViewById(R.id.logBox_add);
+            highlight = itemView.findViewById(R.id.logBox_highlight);
+
+            setUnitSystem();
+
+
 
 
             viewHistory.setOnClickListener(new View.OnClickListener() {
@@ -372,6 +386,19 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.viewHolder> implemen
             });
 
 
+
+
+         }
+
+
+         private void setUnitSystem(){
+
+             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+             String navTitle = sharedPref.getString("unit_list", "");
+             if(navTitle.equals("0"))
+                 weightUnit.setText(R.string.lbs);
+             else if (navTitle.equals("1"))
+                 weightUnit.setText(R.string.kg);
 
 
          }

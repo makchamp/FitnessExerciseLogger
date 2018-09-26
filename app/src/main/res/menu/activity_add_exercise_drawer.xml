@@ -7,7 +7,7 @@
 
         <item
             android:id="@+id/menuLog"
-            android:icon="@drawable/ic_description_black_24dp"
+            android:icon="@drawable/ic_description_white_32dp"
             android:title="My Log " />
 
         <item
@@ -16,7 +16,7 @@
             android:title="Add Exercise" />
         <item
             android:id="@+id/menuSettings"
-            android:icon="@drawable/ic_settings_black_24dp"
+            android:icon="@drawable/ic_settings_black_32dp"
             android:title="Settings" />
     </group>
 

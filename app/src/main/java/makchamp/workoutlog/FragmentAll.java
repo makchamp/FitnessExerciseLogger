@@ -41,14 +41,16 @@ public class FragmentAll extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        View rootView =  inflater.inflate(R.layout.fragment_workout_log_all, null);
+
+        View rootView =  inflater.inflate(R.layout.fragment_workout_log_all, container, false);
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerView_log_all);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(layoutManager);
         adapter2 = new Adapter2(WorkoutLog.logBoxesALL, this.getActivity());
         recyclerView.setAdapter(adapter2);
         emptyLogButn = rootView.findViewById(R.id.emptyLogButn);
+
 
 
         if (WorkoutLog.logBoxesALL.isEmpty()) {
@@ -72,10 +74,10 @@ public class FragmentAll extends Fragment {
         });
 
 
-                adapter2.setOnItemClickListener(new Adapter2.OnItemClickListener() {
+               adapter2.setOnItemClickListener(new Adapter2.OnItemClickListener() {
                     @Override
                     public void onItemClick(int pos) {
-                       chosenLogBox = WorkoutLog.logBoxesALL.get(pos);
+                       chosenLogBox = Adapter2.logBoxList.get(pos);
 
                         title.setName(chosenLogBox.getExerciseName());
 
@@ -88,12 +90,7 @@ public class FragmentAll extends Fragment {
                     }
 
 
-                    public void onDelete(int pos) {
 
-                         createDialog();
-
-
-                    }
                 });
 
 
@@ -101,12 +98,6 @@ public class FragmentAll extends Fragment {
 
     }
 
-    public void createDialog(){
-
-        DeleteDialog x = new DeleteDialog();
-        x.show(getFragmentManager(), "x");
-
-    }
 
 
 
@@ -134,32 +125,7 @@ public class FragmentAll extends Fragment {
         }
     }
 
-  /*  @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-
-        inflater.inflate(R.menu.workout_log, menu);
-        MenuItem searchField = menu.findItem(R.id.action_settings_search_wl);
-        SearchView searchView = (SearchView) searchField.getActionView();
-
-        searchView.setIconified(true);
 
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                adapter2.getFilter().filter(newText);
-
-                return false;
-            }
-        });
-
-
-    }*/
 }

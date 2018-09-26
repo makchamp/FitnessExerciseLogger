@@ -4,17 +4,25 @@
     <string name="title_activity_search">Search</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Fitness Log</string>
+    <string name="nav_header_subtitle">Beta</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="title_activity_settings">Settings</string>
     <string name="exercise_name">Exercise_Name</string>
     <string name="exercise_reps">Number of Reps: </string>
-    <string name="exercise_weight">Weight: </string>
+    <string name="exercise_weight_lbs">Weight (lbs): </string>
+    <string name="exercise_weight_kg">Weight (kg): </string>
+    <string name="lbs">lbs</string>
+    <string name="kg">kg</string>
     <string name="exercise_hint_num">Enter #  </string>
     <string name="exercise_hint_date">Enter Date  </string>
     <string name="exercise_date">Date Performed: </string>
     <string name="emptyLogg"> Tap to Add an Exercise </string>
+    <string name="highlight_personal_best">Personal Best: </string>
+    <string name="highlight_latest">Latest: </string>
+
+
+
 
     <!-- Action Bar settings -->
     <string name="action_settings_add">Add to Log</string>
