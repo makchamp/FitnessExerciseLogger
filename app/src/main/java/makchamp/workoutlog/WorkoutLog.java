@@ -3,7 +3,6 @@ package makchamp.workoutlog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -23,8 +22,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -36,8 +35,9 @@ public class WorkoutLog extends AppCompatActivity
 
     protected static ArrayList<LogBox> logBoxesALL = new ArrayList<>();;
     protected static ArrayList<String> addedExercises =  new ArrayList<>();
+    private static final String FILE_NAME = "Data.txt";
 
-    public String path = Environment.getExternalStorageDirectory().toString() + "/FitnessLog";
+  //  public String path = Environment.getExternalStorageDirectory().toString() + "/FitnessLog";
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -67,10 +67,10 @@ public class WorkoutLog extends AppCompatActivity
         TextView navTitleView = (TextView) headerView.findViewById(R.id.nav_header_title);
         navTitleView.setText(navTitle);*/
 
-        File fileDir = new File(path);
+       /* File fileDir = new File(path);
 
         if(!fileDir.exists())
-            fileDir.mkdirs();
+            fileDir.mkdirs();*/
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setOffscreenPageLimit(6);
@@ -121,7 +121,7 @@ public class WorkoutLog extends AppCompatActivity
     }
 
 
-    public void read(){
+   /* public void read(){
 
         File file = new File(path + "/Data.txt");
 
@@ -178,44 +178,94 @@ public class WorkoutLog extends AppCompatActivity
 
         }
 
-    }
+    }*/
 
-  /*  public void save(){
+    public void save(){
 
-        Gson gson = new Gson();
-        SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        String toJson = gson.toJson(logBoxesALL);
-        editor.putString("LogList", toJson);
-        editor.apply();
+      FileOutputStream fOut = null;
+      ObjectOutputStream oOUt = null;
+
+      try{
+          fOut = openFileOutput(FILE_NAME, MODE_PRIVATE);
+          oOUt = new ObjectOutputStream(fOut);
+          oOUt.writeObject(logBoxesALL);
+          oOUt.writeObject(addedExercises);
+
+
+
+      }catch(FileNotFoundException e){
+
+      }catch (IOException e){
+
+
+      }finally {
+
+          try{
+
+              if(oOUt  != null)
+                  oOUt.close();
+          }catch(IOException e){
+
+          }
+
+      }
+
+
+
+
 
     }
 
     public void load(){
 
-        Gson gson = new Gson();
-        SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
-        String fromJson = sharedPreferences.getString("LogList", null);
-        Type type = new TypeToken<ArrayList<LogBox>>() {}.getType();
+        FileInputStream fIN = null;
+        ObjectInputStream oIN = null;
 
-        if(logBoxesALL.isEmpty())
-        logBoxesALL = gson.fromJson(fromJson, type);
-    }*/
+        try{
+            fIN = openFileInput(FILE_NAME);
+            oIN = new ObjectInputStream(fIN);
+            if(logBoxesALL.isEmpty())
+                logBoxesALL = (ArrayList<LogBox>) oIN.readObject();
+
+            if(addedExercises.isEmpty())
+                addedExercises = (ArrayList<String>) oIN.readObject();
+
+
+        }catch(ClassNotFoundException e){
+
+        }catch (IOException e){
+
+
+        }finally {
+
+            try{
+
+                if(oIN  != null)
+                    oIN.close();
+            }catch(IOException e){
+
+            }
+
+        }
+
+
+
+    }
 
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        read();
-        //load();
+       // read();
+        load();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-         write();
-        // save();
+        // write();
+         save();
     }
 
     public void onResume() {

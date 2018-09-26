@@ -1,8 +1,8 @@
 package makchamp.workoutlog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,8 +28,9 @@ public class FragmentLegs extends Fragment {
     private Adapter2 adapter;
     private Button emptyLogButn;
     protected static LogBox chosenLogBox;
+    private static final String FILE_NAME = "DataL.txt";
 
-    public String path = Environment.getExternalStorageDirectory().toString() + "/FitnessLog";
+   // public String path = Environment.getExternalStorageDirectory().toString() + "/FitnessLog";
 
 
     public FragmentLegs() {
@@ -98,14 +99,14 @@ public class FragmentLegs extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        write();
+        save();
 
     }
 
     @Override
     public void onStart() {
         super.onStart();
-         read();
+         load();
     }
 
     public static FragmentLegs newInstance(ArrayList<LogBox> logBoxes) {
@@ -129,7 +130,81 @@ public class FragmentLegs extends Fragment {
         }
     }
 
-    public void read() {
+    public void save(){
+
+        FileOutputStream fOut = null;
+        ObjectOutputStream oOUt = null;
+
+        try{
+            fOut = getContext().openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
+            oOUt = new ObjectOutputStream(fOut);
+            oOUt.writeObject(logBoxesLegs);
+            oOUt.writeObject(WorkoutLog.addedExercises);
+
+
+
+        }catch(FileNotFoundException e){
+
+        }catch (IOException e){
+
+
+        }finally {
+
+            try{
+
+                if(oOUt  != null)
+                    oOUt.close();
+            }catch(IOException e){
+
+            }
+
+        }
+
+
+
+
+
+    }
+
+    public void load(){
+
+        FileInputStream fIN = null;
+        ObjectInputStream oIN = null;
+
+        try{
+            fIN = getContext().openFileInput(FILE_NAME);
+            oIN = new ObjectInputStream(fIN);
+            if(logBoxesLegs.isEmpty())
+                logBoxesLegs= (ArrayList<LogBox>) oIN.readObject();
+
+            if(WorkoutLog.addedExercises.isEmpty())
+                WorkoutLog.addedExercises = (ArrayList<String>) oIN.readObject();
+
+
+        }catch(ClassNotFoundException e){
+
+        }catch (IOException e){
+
+
+        }finally {
+
+            try{
+
+                if(oIN  != null)
+                    oIN.close();
+            }catch(IOException e){
+
+            }
+
+        }
+
+
+
+    }
+
+
+
+ /*   public void read() {
 
         File file = new File(path + "/DataL.txt");
 
@@ -186,7 +261,7 @@ public class FragmentLegs extends Fragment {
 
         }
 
-    }
+    }*/
 
 
 
