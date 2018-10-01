@@ -211,5 +211,14 @@ public class Settings extends AppCompatPreferenceActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i0 = new Intent(Settings.this, MainMenu.class);
+        startActivity(i0);
+    }
+
+
+
 
 }
